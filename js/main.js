@@ -78,13 +78,3 @@ function toggle(btn, accordian, goHome) {
     }
 }
 
-//page number function
-const pxToCm = 0.026458;
-const body = document.body;
-const html = document.documentElement;
-const height = Math.max(body.getBoundingClientRect().height,
-    html.getBoundingClientRect().height);
-console.log(height * pxToCm);
-
-
-
