@@ -10,12 +10,16 @@
     @page {
         size: A4;
         margin: 2.5cm;
-        counter-increment: page;
     }
-    @page :header {
+    @page:left{
+        @bottom-left {
+            content: "Page " counter(page) " of " counter(pages);
+        }
+    }
+    @page:header {
         display: none;
     }
-    @page :foooter {
+    @page:foooter {
         display: none;
     }
     .main-nav, header, footer, #banner {
