@@ -10,7 +10,7 @@
     @page {
         size: A4;
         margin: 2.5cm;
-        @bottom-left {
+        @bottom-center {
             counter-increment: page;
             content:"Page " counter(page);
         }
