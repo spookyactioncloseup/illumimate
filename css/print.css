@@ -12,11 +12,6 @@
         margin: 2.5cm;
         counter-increment: page;
     }
-    @page:left{
-        @bottom-left {
-            content: "Page " counter(page) " of " counter(pages);
-        }
-    }
     @page :header {
         display: none;
     }
