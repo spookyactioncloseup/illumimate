@@ -14,13 +14,13 @@
     }
     @page:right{
         @bottom-center {
-          content: counter(page);
+          content: "Page " counter(page);
         }
       }
       
       @page:left{
         @bottom-center {
-          content: counter(page);
+          content: "Page " counter(page);
         }
       }
     @page:header {
