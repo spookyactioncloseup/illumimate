@@ -1,59 +1,66 @@
-@page {
-    size: A4;
-    margin: 2.5cm;
-}
-@page :header {
-    display: none;
-}
-@page :foooter {
-    display: none;
-}
-.main-nav, header, footer, #banner {
-    display: none;
-}
-body {
-    font-size: 12pt;
-    background-color: #FFF;
-    counter-reset: page;
-}
-h1 {
-    font-weight: 200;
-    font-size: 60pt;
-    margin: 1rem 0;
-}
-.main-section {
-    font: inherit;
-    position: relative;
-}
-.main-section h2 {
-    color: rgb(35, 154, 156) !important;
-    font-weight: 600 !important;
-    font-size: 28pt;
-    page-break-before: always;
-}
-.main-section h3 {
-    font-size: 18pt;
-    font-weight: 400 !important;
-}
-.main-section h4 {
-    font-size: 16pt;
-    font-weight: 400 !important;
-}
-.no-page-break{
-    page-break-inside: avoid;
-}
-/*
-.main-section::after {
-    counter-increment: page;
-    content:"Page " counter(page);
-    transform: translate(-50%,0);
-    left: 50%;
-    white-space: nowrap; 
-    z-index: 20;
-    bottom: 0.5cm;
-    position: absolute;
-}
-*/
-.hidden {
-    display: block;
+@media print {
+    body {
+        font-size: 12pt;
+        background-color: #FFF;
+        counter-reset: page;
+    }
+    table {
+        page-break-inside: avoid;
+    }
+    @page {
+        size: A4;
+        margin: 2.5cm;
+        @bottom-left {
+            counter-increment: page;
+            content:"Page " counter(page);
+        }
+    }
+    @page :header {
+        display: none;
+    }
+    @page :foooter {
+        display: none;
+    }
+    .main-nav, header, footer, #banner {
+        display: none;
+    }
+    h1 {
+        font-weight: 200;
+        font-size: 60pt;
+        margin: 1rem 0;
+    }
+    .main-section {
+        font: inherit;
+        position: relative;
+    }
+    .main-section h2 {
+        color: rgb(35, 154, 156) !important;
+        font-weight: 600 !important;
+        font-size: 28pt;
+        page-break-before: always;
+    }
+    .main-section h3 {
+        font-size: 18pt;
+        font-weight: 400 !important;
+    }
+    .main-section h4 {
+        font-size: 16pt;
+        font-weight: 400 !important;
+    }
+
+    /*
+    .main-section::after {
+        counter-increment: page;
+        content:"Page " counter(page);
+        transform: translate(-50%,0);
+        left: 50%;
+        white-space: nowrap; 
+        z-index: 20;
+        bottom: 0.5cm;
+        position: absolute;
+    }
+    */
+    .hidden {
+        display: block;
+    }
 }
