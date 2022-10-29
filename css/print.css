@@ -13,13 +13,13 @@
         counter-increment: page;
     }
     @page:right{
-        @bottom-right {
+        @bottom-center {
           content: counter(page);
         }
       }
       
       @page:left{
-        @bottom-left {
+        @bottom-center {
           content: counter(page);
         }
       }
