@@ -1,0 +1,42 @@
+@media screen and (max-width: 576px) {
+    .main-nav {
+        position: relative;
+        padding-top: 1.5em;
+    }
+    .main-nav a {
+        display: none;
+    }
+    .main-nav a.icon {
+        display: block;
+        position: absolute;
+        top: 0;
+        left: 1.3em;
+        padding: 0;
+    }
+    .main-nav.responsive {
+        position: relative;
+        display: block;
+        padding: 0;
+        
+    }
+    .main-nav.responsive a {
+        float: none;
+        display: flex;
+        flex:100%;
+    }
+  }
+
+/* Small devices (landscape phones, 576px and up)*/
+@media (min-width: 576px) {}
+
+/* Medium devices (tablets, 768px and up)*/
+@media (min-width: 768px) {}
+
+/* Large devices (desktops, 992px and up)*/
+@media (min-width: 992px) {}
+
+/* X-Large devices (large desktops, 1200px and up)*/
+@media (min-width: 1200px) {}
+
+/* XX-Large devices (larger desktops, 1400px and up)*/
+@media (min-width: 1400px) {}
