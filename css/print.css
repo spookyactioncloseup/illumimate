@@ -11,10 +11,18 @@
         size: A4;
         margin: 2.5cm;
         counter-increment: page;
-        @bottom-center {
-            content: "Page " counter(page);
-        }
     }
+    @page:right{
+        @bottom-right {
+          content: counter(page);
+        }
+      }
+      
+      @page:left{
+        @bottom-left {
+          content: counter(page);
+        }
+      }
     @page:header {
         display: none;
     }
@@ -47,19 +55,6 @@
         font-size: 16pt;
         font-weight: 400 !important;
     }
-
-    /*
-    .main-section::after {
-        counter-increment: page;
-        content:"Page " counter(page);
-        transform: translate(-50%,0);
-        left: 50%;
-        white-space: nowrap; 
-        z-index: 20;
-        bottom: 0.5cm;
-        position: absolute;
-    }
-    */
     .hidden {
         display: block;
     }
