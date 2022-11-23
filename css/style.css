@@ -217,16 +217,20 @@ table caption {
     border-collapse: collapse;
     margin: 2rem 0;
     table-layout: fixed;
+    font-size: inherit;
+    line-height: 1.9;
+}
+.table1 td {
+    vertical-align: top;
 }
 .table1 th, .table1 td {
-    vertical-align: middle;
-    padding: 1.7em 0;
-    text-align: center;
     border: 1px solid #DDD;
 }
 .table1 th {
-    background: #444;
-    font-size: 1.2em;
-    color: #FFF;
+    font-weight: bold;
+    padding: 1em 0;
 }
-
+th img, td img {
+    margin-left: auto;
+    margin-right: auto;
+}
