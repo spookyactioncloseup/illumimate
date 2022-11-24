@@ -44,6 +44,7 @@
         margin: 0 auto 1rem;
         
     }
+    .tohide { display: none; }
   }
 
 /* Small devices (landscape phones, 576px and up)*/

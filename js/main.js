@@ -61,7 +61,7 @@ function toggle(btn, accordian, goHome) {
         accordian.nextElementSibling.classList.remove('hidden');
 
         setTimeout(() => {
-            let top = accordian.offsetTop - (mainNav.offsetHeight + 30);
+            let top = accordian.offsetTop - (mainNav.offsetHeight + 20);
             window.scroll({
                 top: top,
                 behaviour: 'smooth'
@@ -70,7 +70,7 @@ function toggle(btn, accordian, goHome) {
 
     } else {
         setTimeout(() => {
-            let top = 0 - (mainNav.offsetHeight + 30);
+            let top = 0 - (mainNav.offsetHeight + 20);
             window.scroll({
                 top: top,
                 behaviour: 'smooth'
