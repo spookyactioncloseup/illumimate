@@ -91,9 +91,13 @@ p, pre, ul {
     text-underline-offset: 0.5em;
     
 }
-.main-nav .icon {
+.menu-btn {
     display: none;
 }
+/*
+.main-nav .icon {
+    display: none;
+}*/
 #banner {
     background-color: var(--banner-bg-colour);
     height: 100vh;
@@ -151,7 +155,7 @@ p, pre, ul {
     font-weight: 300;
 }
 .main-section h4 {
-    font-size: 1.8rem;
+    font-size: 2rem;
     margin: 1rem 0;
     font-style: italic;
     font-weight: 300;
@@ -236,11 +240,12 @@ th img, td img {
     margin-left: auto;
     margin-right: auto;
 }
-.profiles > div {
-    padding: 2rem 0;
+.profiles > div:not(:last-child) {
+    padding-bottom: 20px;
 }
 .profiles > div:not(:first-child) {
     border-top: 2px dashed #ddd;
+    padding-top: 20px;
 }
 .profile-img {
     height: 400px;

@@ -1,5 +1,5 @@
 const banner = document.querySelector('#banner');
-const mainNavBtn = document.querySelector('.main-nav .icon');
+const mainNavBtn = document.querySelector('.menu-btn');
 const mainNav = document.querySelector('.main-nav');
 banner.style.paddingTop =  mainNav.offsetHeight + "px";
 
@@ -18,10 +18,11 @@ const navBtns = document.querySelectorAll('.main-nav a');
 navBtns.forEach(navBtn => {
     navBtn.addEventListener('click', ev => {
         ev.preventDefault();
+        mainNav.classList.remove('responsive');
         let goHome = false;
         let targetElem = ev.target.getAttribute('href');
         console.log(targetElem);
-        if (targetElem === '#icon') return;
+        if (targetElem === '#menu') return;
         if (targetElem === '#home') {
             goHome = true;
         }  

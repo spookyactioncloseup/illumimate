@@ -11,7 +11,6 @@
     <body>
         <header id="nav">
             <nav class="main-nav" id="home">
-                <a href="#icon" class="icon"><i class="fa fa-bars fa-2x" aria-hidden="true"></i></a>
                 <a href="#home" class="active"><i class="fa fa-house" ></i></a>
                 <a href="#team">The Team</a>
                 <a href="#tools">Tools</a>
@@ -21,6 +20,7 @@
                 <a href="#meetings">Meetings</a>
                 <a href="#references">References</a>
             </nav>
+            <span class="menu-btn"><i class="fa fa-bars fa-2x" aria-hidden="true"></i></span>
         </header>
         <main id="main-content">
             <section class="hidden">
@@ -323,7 +323,7 @@
                             </div>
                             <div>
                                 <h4>Tools and Technologies</h4> 
-                                <p>* In the following - "No license required for use" either means that the tool is proprietary and free or in the case of open-source we will only be utilizing a tool for its intended purpose without making any modifications.</p>
+                                <p>Note: In the following - "No license required for use" either means that the tool is proprietary and free or in the case of open-source we will only be utilizing a tool for its intended purpose without making any modifications.</p>
                                 <ul> 
                                 
                                 <li>Adobe XD (Adobe Creative suite prescription or purchase).</li> 
@@ -400,7 +400,55 @@
                                 <h4>Timeframe</h4>
                             </div>
                             <div>
-                                <h4>Risks</h4>
+                                <h4>Risks</h4> 
+
+                                    <p>We have broken our risks down into our three main areas of concern for our application development, these are as follows.</p> 
+                                    
+                                    <div> 
+                                    
+                                    <h5>UI/UX and Content Design Risks</h5> 
+                                    
+                                    <p>There are several risks in relation to the content and UI/UX design. The main one is that of not connecting with the user. If the user cannot intuitively use the application, we have failed. This risk is a hard one because of the design itself. The application, at least aesthetically from having a map centric focus, will be very similar to its competitors (Google Maps and WalkSafe), and runs the risk of being just a copy. However, with any significant changes, the app may no longer be intuitive. </p> 
+                                    
+                                    <p>The logo and graphic design of the Illumimate design is simplistic and easy to read. However, if the user does not know the visual ‘jargon’ for the use of map applications the user will be confused by the logo. There also is a risk of the subjectivity of design – not everyone is going to like the design of the application. The risk is that it’s simply impossible to please everyone. <p> 
+                                    
+                                    <p>This also leads into unachievable goals for the designer. People outside the creative field don’t understand the process and might expect too much of the designer. Most people assume design work is easy and is just like ‘drawing a picture’ when in fact it takes years of learning and skill building. This risk creates tension between the team and is sometimes hard to work through. </p> 
+                                    
+                                    <p>Another issue includes how creativity is limited by deadlines. Sometimes design work is simply going to take longer than intended, and deadlines interfere with creative design. Additional meetings and wait times for approvals take time which some projects simply don’t have. Including late content is a drag on other team members and their own deadlines, so it becomes an issue overall for the whole team if design is late-coming. </p> 
+                                    
+                                    </div> 
+                                    
+                                    <div> 
+                                    
+                                    <h5>Application Development Risks</h5> 
+                                    
+                                    <p>When developing the application, we might use tools and technologies that leave our application partially or completely incompatible with different versions of mobile OS’s. Alternatively, we could find that despite having full compatibility, due to tooling and or other development choices, IllumiMate might not offer desirable performance.</p> 
+                                    
+                                    <p>Using prebuilt software can be a challenge because often other tools will be used to build it and these tools might be novel and have a high a steep learning curve. Furthermore, some of the software, due to its intended use, might either lack extensibility, or at least be difficult to extend.</p> 
+                                    
+                                    <p>Choosing the right server can be a balancing act. Servers come in many forms, which include many variations of VPSs to Cloud servers, and pricing points. To launch an application, we need to balance the estimated usage and storage needs with financial capability. If the server is inadequate the initial users will get a bad experience with performance and reliability. However, if the server option is expensive and uptake is low, it could misplace much needed funds from other areas of development.</p> 
+                                    
+                                    <p>The tools and technologies chosen to build IllumiMate might lack the flexibility and or intuitiveness for sustainable development. This could manifest in slow feature implementation, which could see users getting irritated and our competition able to do so with less effort and cost.</p>  
+                                    
+                                    <p>The use of open-source repositories will make some parts of the code base dependent on updates from their respective developers. If those repositories go stale, then it might be hard to keep our application functional. IllumiMate will be heavily dependent on GraphHopper and OpenStreetMap.</p> 
+                                    
+                                    </div> 
+                                    
+                                    <div> 
+                                    
+                                    <h5>Data Risks</h5> 
+                                    
+                                    <p>One of the key risks is the acquiring of streetlight data for the maps and route calculations. The data currently available is via <a href=” https://data.gov.au/”> data.gov.au - beta</a>, this subject to local government authorities releasing their data, this could lead to an incomplete map where certain areas are missing streetlight data. We have seen were we only got public use places only as seen in the case of the City of Manningham, the data that was provided was for parks, recreation areas, sporting areas, walking areas, bicycle paths. </p> 
+                                    
+                                    <p>A material risk is that the data released by local government and government agencies differs from each other, the columns and data values will be in different places to each other, some the types of data will also be varied. This will require a standard table create to input the data before it is ready for use by the developers. This leads to another critical risk is in the changing of the data set that we receive, i.e., currently we have 7 columns, labelled, at the next data capture, we see that they are 9 columns, and these have been rearranged. This change would disrupt the data loaded to the map will be incorrect. </p> 
+                                    
+                                    <p>Incorrect type of API format chosen is a risk which could disrupt the data mapping we will need to work in conjunction with local government authorities or the data providers, as a change in the expect format itself would require a re-build of the transformation layer or an additional layer to input into the main table used by the application. </p> 
+                                    
+                                    <p>Incomplete or missing streetlight lamp information, if the service providers decide to withdraw the lamp information this would disrupt the rating system and the route calculation. The service providers are separate to local government authorities and may for business, commercial reasons wish to withhold this information, this risk would need to be considered. </p> 
+                                    
+                                    </div> 
+                                    
+                                     
                             </div>
                             <div>
                                 <h4>Group Process and Communications</h4>
