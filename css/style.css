@@ -236,6 +236,12 @@ th img, td img {
     margin-left: auto;
     margin-right: auto;
 }
+.profiles > div {
+    padding: 2rem 0;
+}
+.profiles > div:not(:first-child) {
+    border-top: 2px dashed #ddd;
+}
 .profile-img {
     height: 400px;
     width: 400px;
