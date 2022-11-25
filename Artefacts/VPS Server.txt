@@ -1,4 +1,4 @@
 Running on VPS from Hostinger:
 
 GraphHopper Maps http://191.96.57.73:3000/?profile=most_lit_route&layer=OpenStreetMap
-GraphHopper http://191.96.57.73:8989/maps/
+GraphHopper http://191.96.57.73:8989/maps
