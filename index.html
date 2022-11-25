@@ -234,6 +234,90 @@
                                 To finish, the last goal of the Light Bringers is to create an intuitive app which is easy to use. Including the safest, most lit way home is good, however it’s no use if the application is hard to use, or overly complicated.  UX/UI design is important for Illumimate’s success. We use the competitor’s application, Google Maps, on a daily basis. It is easy to use and has set certain features in our mind. Although our apps look and feel similar, Illumimate has safety in mind, therefore is more applicable for pedestrians looking for safety. As long as Illuminate’s user experience is one of ease, the application can help thousand, if not millions of people on their journey. </p>
                             </div> 
                                 <h4>Plans and Progress</h4>
+                                <h5>What our Project will do</h5>
+<p>IllumiMate is a cross platform mobile application designed to help pedestrians with access to a smart phone find routes for any destination with the most illumination and least impediments. In the following we will look at what we plan to do.</p>
+<ol>
+<li>
+<h5>Primary Data & Information</h5>
+<p>Illumimate will get its primary data, information, and updates from the application administrators. This will come from a host of different trustworthy sources, or from direct administrator reconnaissance. </p>
+</li>
+<li>
+<h5>The Routing</h5>
+<p>The project is designed to create a mobile application which lets a pedestrian select a walking route, which goes beyond standard map routing applications, by factoring in safety considerations such as lighting and crime data. Firstly, the user will be able to select a route calculation option from the “Most lit”, “Safest”, “Fastest”, and “Shortest”. A description of the function of these options is as follows:</p>
+<ul>
+<li><h6>"Most lit”:</h6> route will prioritize route lighting above all other factors. This will be achieved by an algorithm that we refer to internally as IllumiMate Map Encoding Reader Algorithm (IMERA). GraphHopper reads an OSM map extracting nodes (point coordinate intersections) with the tag (a key value pair encoding) of simply “IMLight”, which is encoded by the IllumiMate team into the OSM. For this option, IMERA takes the number of IMLight nodes that occur on, or within 10 meters of the edge of, a route  and multiplies it with their perceived brightness rating, Pupil Lumens, and then divides it by total route distance to deliver a hidden weighting of 0 - 4. The weightings are as follows:
+ 	<ul><li>0 = is no light or N/A</li>
+<li>1 = some light</li>
+<li>2 = is moderate lighting</li>
+<li>3 = is good lighting</li>
+<li>4 = excellent lighting</li></ul>
+<p>A “Most lit” route will be selected in accordance with an ascending weight rating.</p>
+</li>
+<li><h6>”Safest”:</h6> route will combine the scores for “Most lit”, “Fastest”, and a crime-based calculation. Route will be given a crime score of 0-5, 0 being none and 5 being the highest. The lower the score the more a route will be prioritized. IMERA will read in OSM area layers for crime, which we will be encoded as “IMCrimeArea”, and simply tag a way with its corresponding area crime score as a number for example ‘IMCrimeScore’:3. User crime submissions will be encoded as nodes on the map with the tag “IMCrimeReport”, which will have value choices for the submission of crime type. Crime type will be corresponded with appropriate matching score, 1-5, in a lookup table. The lookup table might follow this schema:
+	<table>
+	<tr>
+	<th>Crime</th>
+	<th>Rating</th>
+</tr>
+	<tr>
+<td>Theft</td>
+<td>1</td>
+</tr>
+<td>Burglary</td>
+<td>2</td>
+<tr>
+<td>Violence</td>
+<td>3</td>
+</tr>
+<tr>
+<td>Assault</td>
+<td>4</td>
+</tr>
+<tr>
+<td>Murder</td>
+<td>5</td>
+</tr>
+	</table>
+</p>The number and score of these crimes along a route will be multiplied. This number will be divided by the closest next exponent of 10 to give a percentage which will then be multiplied by 5 to give a crime score. This score will be encoded into a way rating with their previous IMCrimeScore and averaged to get a new IMCrimeScore. The IMCrimeScore for each way will be added up and then averaged by the number of ways in a route. While this is a very simplistic calculation that might cause some issues, we will work to improve the algorithm over time. To get the weighting for the “Safest” route the scores for “Most lit” and “Fastest” will be added together and the final route IMCrimeScore average will be deducted.</p>
+</li>
+<li><h6>”Fastest”</h6> route is already calculated in the GraphHopper system. This works out route time complexity taking into consideration surface conditions, route geometry, elevation changes, etc and combines it distance to make a route evaluation. A routes time duration is an important factor in considering safety. However, luckily, we don’t need to do any work on this front, simply using the pre-existing algorithm in our own weighting calculations.
+</li>
+<li><h6>”Shortest”</h6> route is already calculated in the GraphHopper system. This takes into consideration nothing more than distance to make a route evaluation. As in the case with “Fastest”, we don’t need to do any work on this front, simply using the pre-existing algorithm in our own weighting calculations.
+</li>
+</ul>
+<p>To build the aforementioned routing capabilities we will need to clone a copy of the GraphHopper repository and begin to extend the routing classes in the GraphHopper core source files. We will need to create two new extended classes of EncodedValue for IMCrimeArea and IMLight. On the other hand, IMERA will need to be constructed as a custom weighting class in GraphHopper that takes in the already extracted map encoded values of IMCrimeArea and IMLight.</p>
+</li>
+<li>
+<h5>Maps and Modifications</h5>
+<p>To help GraphHopper get the information it needs to make route calculations, it needs the right encoded values in the maps it uses. Thus, we will use the Fabrik API to download the required OSM maps. We will use JOSM to edit these maps. We can import csv files which contain coordinates nodes, and 2d area coordinates, each being comprised of a minimum of 4 sets of coordinates. These csv files will also contain all the necessary tags / encoded data for each of these nodes and areas. Once the maps have been modified, they will be fed into GraphHopper. All the maps will be stored on the same physical server as our custom GraphHopper server. Maps can be merged to maintain information from prior edits and to keep other information up to date. We will need to establish a cron job with logical scheduling to check for new copies of maps from Fabrik, and organize a safe merge, with backup of the previous working map.
+</li>
+<li>
+<h5>Users & Accounts</h5>
+<p>
+To use the IllumiMate users will be required to setup an account. Users will need to provide proof of their identity through a two-factor authentication like Authy. User accounts will be stored in a database table and be used to grant access to the IllumiMate services. There will be a number of different account levels to determine the scrutiny applied to data from user submissions. These will be present and obvious to the users via the use of platform progression labels on their accounts. We will use terms of increasing value such as ‘The Owl’, ‘The Defender’, ‘The Chosen One’, etc to encourage user submissions and consequent potential to ascend in their ranking label. 
+</p>
+</li>
+<li>
+<h5>Crowdsourcing</h5>
+<p>While we have described in detail the fundamental routing functions of IllumiMate, we really see IllumiMate being a platform more than a simple app. By the time it reaches a beta version, it will consist of a host of functions, all with the intention of improve its routing capabilities and ultimately usefulness. One of the main aspects that will propel IllumiMate to being a true platform, and thus requires a strong development focus, will be the crowdsourcing functions. The functions will function as follows:
+<ul>
+<li>Users will be able to share a range of data and information with the IllumiMate user submission service. We need to establish clear and simple rules that govern user accounts and their permissions, especially with respect to submissions. Therefore, it is suggested that a low account level, ‘The Owl’, will require both administrator and ML scrutiny of any submission to ensure its validity before integration. The highest account level, ‘The Chosen One’, will allow submissions to be integrated immediately. Scrutiny for these submissions will come in the form of post ML review and other users.</li>
+<li>To allow user active user submission we propose to include a submission button. This button will launch a modal overlay which will include a choice of data type being crime or an unknown streetlight. For the crime submission they be asked for the type of crime from a list, then be required to drop a location pin on the map, and finally be required to take a snapshot of the location from a safe distance of course. Alternatively, for the light streetlight submission they will be asked to drop a location pin on the map and take a picture of the light from as close as possible. The built-in picture taking portion of the app will record and submit not only a picture for ML confirmation purposes, but a light intensity and light colour measurement that can be included if the submission is accepted.</li>
+<li>Users will be able to opt in to share their app usage patterns, with privacy controls. This will share a log of routes, the user route and algorithm choice. This will hopefully yield insight into how the app is being used, and perhaps the reasons for particular choices. For example, a route heat-map/usage overlay might indicate unknown issues with and or changes to certain routes and their constituent ways.</li>
+<li>After a user has reached their destination the app will use the well-established mobile application popup with rate and review. This will ask a user for a review of the route with a breakdown of most important metrics and a rating out of 5 stars. These categories will include: ‘Route as Illuminated as Suggested’, ‘Route as Fast as Suggested’, ‘Was the Route as Described’. Underneath this there will be a textbox for a longer review giving better insight into any issues that might exist.</li>
+</li>
+<h5>Start of the Project Journey</h5>
+<p> Our Project started with 4 team members, Tessa, Michaela, Clive and Shashi, however Michaela left at the beginning and is no longer with the group. We assigned the key elements based on strengths and experience.</p>
+<h5>Progress</h5>
+<p> We are in the middle stages of development, with the 3 key elements progressing well. We developed the idea of the advert which in presented in a city scape, with a character walking along a path, along with the music. The mobile application development is well underway and looking at incorporating the rating system across into the streetlights on the map. We have sourced the data and applied into PowerBI and viewed what a map on an application would look like. The rating system has been applied to the ACT, this has shown how streetlights and look on a map and what type of lights are placed only which parts of an area.
+One key discovery was that not streetlights are not placed along every street and some streets may not have any lights, while others are well lit. Major roads and highways tend to have a medium type of lighting.</p>
+
+<h5>Dead Ends</h5>
+<p> We look at applications developed in PowerBI, <a class=”showlink” href=”https://appsource.microsoft.com/en-us/product/power-bi-visuals/wa104380985?tab=overview"></a> that may assist in creating routes for start end points for a destination, however having viewed this was not considered worthwhile as the on-going support and development may cease. Having read the forum for this application it is very sporadic and may not meet our needs. This application doesn’t appear to support a calculation mechanism for the best route, weighted with the best lit route. </p>
+
+<h5>Decisions Made</h5>
+<p>At the beginning of the project, Tess came up with 6 different logos for IllumiMate. We all voted and decided on the outline of a light globe, with a destination point on the inside of the lightbulb.</p>
+
                             </div>
                             <div>
                                 <h4>Roles</h4> 
@@ -332,6 +416,7 @@
                                 
                                 <li>Map API OpenStreetMap with modeifications. This is open data licensed under the oDbL (Open Data Commons Open Database License). This means attribution is required and all modified works must be released under the oDbL.</li> 
                                 
+                                <li>Frabrik OpenStreetMap Map downloading API (No license requires for use).</li>
                                 <li>JOSM map editor for OpenStreetMap (no license required for use). We are not modifying this application, so we don’t need to be concerned with its GPL V2 or higher license. 
                                 
                                 <li>GraphHopper Directions API, free license with limitations. </li> 
