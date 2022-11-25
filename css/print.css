@@ -58,4 +58,7 @@
     .hidden {
         display: block;
     }
+    .profile-img {
+        display: none;
+    }
 }
