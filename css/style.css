@@ -268,3 +268,7 @@ th img, td img {
     margin: 0 auto;
     top: 20px;
 }
+
+.meetings td {
+    text-align: center;
+}
