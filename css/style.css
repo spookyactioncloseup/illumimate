@@ -272,3 +272,7 @@ th img, td img {
 .meetings td {
     text-align: center;
 }
+
+.showlink::after {
+    content: '' attr(href);
+}
