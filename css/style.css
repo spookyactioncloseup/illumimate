@@ -174,9 +174,11 @@ p, pre, ul {
 .accordian-active {
     display: block;
 }
+/*
 .hidden {
     display: none;
 }
+*/
 .inline {
     display: inline;
 }
