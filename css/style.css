@@ -272,6 +272,13 @@ th img, td img {
 .meetings td {
     text-align: center;
 }
+.showlink, .showlink:visited  {
+    text-decoration: none;
+    color: inherit;
+}
+.showlink:hover {
+    text-decoration: underline;
+}
 
 .showlink::after {
     content: '' attr(href);
